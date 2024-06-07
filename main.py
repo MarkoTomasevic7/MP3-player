@@ -25,9 +25,6 @@ playlist = []
 pygame.mixer.init(frequency=44100, size=-16, channels=2, buffer=1024, devicename=None, allowedchanges=0)
 #verifying mixer is indeed initialised
 pygame.mixer.get_init()
-#event thats triggered when a song ends. +1 because there are prebuilt events, this means 1st custom event
-song_end = pygame.USEREVENT + 1
-pygame.mixer.music.set_endevent(song_end)
 
 
 #variables to track playback state
@@ -132,7 +129,18 @@ def item_double_clicked(event):
         print(f"New playlist: {playlist}")
         toggle_playlist()
 
-
+"""
+# Function to play the playlist
+def play_playlist(playlist):
+    for track in playlist:
+        # Load the current track
+        pygame.mixer.music.load(track)
+        # Play the track
+        pygame.mixer.music.play()
+        # Wait until the track is finished
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+"""
 
 #----------------------------------------- DISPLAYING THE MUSIC PLAYER ---------------------------------------------------
 
